@@ -5,22 +5,28 @@ import Colors from '../config/Colors';
 import Button from '../components/Button/Button.component';
 import ButtonComponentStyle from '../styles/Button.component.style';
 
-const WelcomeScreen = () => (
+const WelcomeScreen = ({navigation}) => {
+  return (
   <SafeAreaView style={styles.background}>
     <ImageBackground
       style={styles.background}
       source={require("../assets/background.jpg")}>
       <View style={styles.logoContainer}>
         <Image style={styles.logo} source={require('../assets/logo.png')} />
-        <Text style={styles.tagLine}>World of Entertainment</Text>
+        <Text onPress={() =>navigation.navigate('View')} style={styles.tagLine}>World of Entertainment</Text>
       </View>
       <View style={styles.flexContainer}>
-        <Button text={"Login"} style={[ButtonComponentStyle.button, ButtonComponentStyle.green]} />
-        <Button text={"Sign up"} style={ButtonComponentStyle.button} onPress={() => navigation.navigate('Details')} />
+        <Button text={"Login"} style={[ButtonComponentStyle.button, ButtonComponentStyle.green]} 
+         clickEvent={()=>{ navigation.navigate('View')}}
+        />
+        <Button text={"Sign up"} style={ButtonComponentStyle.button}  
+       clickEvent={()=>{ navigation.navigate('View')}}
+        />
       </View>
     </ImageBackground>
-  </SafeAreaView>
-);
+  </SafeAreaView> 
+  );
+};
 
 const styles = StyleSheet.create({
   background: {
